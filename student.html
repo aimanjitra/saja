@@ -306,12 +306,12 @@
 	    const ekt124 = urlParams.get('ekt124') || 'N/A';
 
 	    const nekt102 = ekt102;
-const neqt101 = eqt101;
-const nekt101 = ekt101;
-const nekt120 = ekt120;
-const nuzw164 = uzw164;
-const nuuw130 = uuw130;
-const nekt124 = ekt124;
+	    const neqt101 = eqt101;
+	    const nekt101 = ekt101;
+	    const nekt120 = ekt120;
+	    const nuzw164 = uzw164;
+	    const nuuw130 = uuw130;
+	    const nekt124 = ekt124;
 
             // Update elements with URL parameter values
             document.getElementById('fullName').textContent = `Name: ${fullName}`;
@@ -582,6 +582,39 @@ newScheduleDiv2.innerHTML = newScheduleMessage2;
     const CGPA2= (GPA1 + GPA2)/2;
     const cgpa2 = document.getElementById('CGPA2');
     cgpa2.textContent = `CGPA: ${CGPA2.toFixed(2)}`;
+
+<?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "login_system";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            $sql = "SELECT * FROM student_comp WHERE username = '$username' AND password = '$password'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "document.getElementById('fullName').textContent = 'Name: {$row['full_name']}';";
+                    echo "document.getElementById('matric').textContent = 'No Matric: {$row['matrik']}';";
+                    echo "document.getElementById('course').textContent = 'Course: {$row['code_course']}';";
+                    echo "document.getElementById('year').textContent = 'Year: {$row['tahun']}';";
+                    echo "document.getElementById('semester').textContent = 'Semester: {$row['sem']}';";
+                }
+            } else {
+                echo "0 results";
+            }
+
+            $conn->close();
+            ?>
 
     });
         
