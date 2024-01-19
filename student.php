@@ -233,13 +233,58 @@
                     <th>Result (Pass/Fail)</th>
                 </tr>
 
-                <!-- Subject 6 -->
+                <!-- Subject 7 -->
                         <tr>
                             <td id="subjectCode7">[Subject Code]</td>
                             <td id="subjectName7">[Subject Name]</td>
                             <td id="creditHour7">[Credit Hour]</td>
-                            <td id="ekt124">[EKT124]</td>
+                            <td id="uzw195">[UZW195]</td>
                             <td id="result7">[Result]</td>
+                        </tr>
+
+                <!-- Subject 8 -->
+                        <tr>
+                            <td id="subjectCode8">[Subject Code]</td>
+                            <td id="subjectName8">[Subject Name]</td>
+                            <td id="creditHour8">[Credit Hour]</td>
+                            <td id="ekt124">[EKT124]</td>
+                            <td id="result8">[Result]</td>
+                        </tr>
+
+                <!-- Subject 9 -->
+                <tr>
+                            <td id="subjectCode9">[Subject Code]</td>
+                            <td id="subjectName9">[Subject Name]</td>
+                            <td id="creditHour9">[Credit Hour]</td>
+                            <td id="ekt103">[EKT103]</td>
+                            <td id="result9">[Result]</td>
+                        </tr>
+                
+                <!-- Subject 10 -->
+                <tr>
+                            <td id="subjectCode10">[Subject Code]</td>
+                            <td id="subjectName10">[Subject Name]</td>
+                            <td id="creditHour10">[Credit Hour]</td>
+                            <td id="ekt119">[EKT119]</td>
+                            <td id="result10">[Result]</td>
+                        </tr>
+
+                <!-- Subject 11 -->
+                <tr>
+                            <td id="subjectCode11">[Subject Code]</td>
+                            <td id="subjectName11">[Subject Name]</td>
+                            <td id="creditHour11">[Credit Hour]</td>
+                            <td id="eqt102">[EQT102]</td>
+                            <td id="result11">[Result]</td>
+                        </tr>
+
+                <!-- Subject 12 -->
+                <tr>
+                            <td id="subjectCode12">[Subject Code]</td>
+                            <td id="subjectName12">[Subject Name]</td>
+                            <td id="creditHour12">[Credit Hour]</td>
+                            <td id="ekt104">[EKT104]</td>
+                            <td id="result12">[Result]</td>
                         </tr>
                 
                         <tr>
@@ -332,6 +377,27 @@ if (isset($_GET['username']) && isset($_GET['password'])) {
             echo "document.getElementById('ekt102').textContent = '{$row['ekt102']}';";
             echo "var ekt102_value = '{$row['ekt102']}';";
 
+            //Semester 2
+
+            echo "document.getElementById('uzw195').textContent = '{$row['uzw195']}';";
+            echo "var uzw195_value = '{$row['uzw195']}';";
+
+            echo "document.getElementById('ekt124').textContent = '{$row['ekt124']}';";
+            echo "var ekt124_value = '{$row['ekt124']}';";
+
+            echo "document.getElementById('ekt103').textContent = '{$row['ekt103']}';";
+            echo "var ekt103_value = '{$row['ekt103']}';";
+
+            echo "document.getElementById('ekt119').textContent = '{$row['ekt119']}';";
+            echo "var ekt119_value = '{$row['ekt119']}';";
+
+            echo "document.getElementById('eqt102').textContent = '{$row['eqt102']}';";
+            echo "var eqt102_value = '{$row['eqt102']}';";
+
+            echo "document.getElementById('ekt104').textContent = '{$row['ekt104']}';";
+            echo "var ekt104_value = '{$row['ekt104']}';";
+
+
 
             // Check if $codeCourse is equal to 'UR6523002'
             $codeCourse = $row['code_course']; // Add this line to define $codeCourse
@@ -389,6 +455,14 @@ var uzw164 = gradeToNum(uzw164_value);
 var uuw130 = gradeToNum(uuw130_value);
 var ekt102 = gradeToNum(ekt102_value);
 
+var uzw195 = gradeToNum(uzw195_value);
+var ekt124 = gradeToNum(ekt124_value);
+var ekt103 = gradeToNum(ekt103_value);
+var ekt119 = gradeToNum(ekt119_value);
+var eqt102 = gradeToNum(eqt102_value);
+var ekt104 = gradeToNum(ekt104_value);
+
+
 let totalCreditHours = 0;
     let failSubjects = []; // Array to store failed subjects
 	let totalCreditHoursSemester1 = 0;
@@ -407,8 +481,14 @@ const subjectsSemester1 = [
 
 // Education Subjects for Semester 2
 const subjectsSemester2 = [
-    { code: 'EKT124', name: 'ELEKTRONIK DIGIT I [DIGITAL ELECTRONICS I]', creditHour: 3 }
+    { code: 'UZW195', name: 'RADIO KAMPUS [CAMPUS RADIO]', creditHour: 3 },
+    { code: 'EKT124', name: 'ELEKTRONIK DIGIT I [DIGITAL ELECTRONICS I]', creditHour: 3 },
+    { code: 'EKT103', name: 'KEJURUTERAAN ELEKTRIK [ELECTRICAL ENGINEERING]', creditHour: 3 },
+    { code: 'EKT119', name: 'LITAR ELEKTRIK II [ELECTRIC CIRCUIT II]', creditHour: 3 },
+    { code: 'EQT102', name: 'MATEMATIK KEJURUTERAAN II [ENGINEERING MATHEMATICS II]', creditHour: 3 },
+    { code: 'EKT104', name: 'LITAR ELEKTRONIK ANALOG 1 [ANALOG ELECTRONIC CIRCUITS 1]', creditHour: 3 }
 ];
+
 
 // Display subjects for Semester 1
 subjectsSemester1.forEach((subject, index) => {
@@ -450,7 +530,7 @@ document.getElementById('total2').textContent = `Total Hour: ${totalCreditHoursS
 		document.getElementById('GPA1').textContent = `GPA: ${GPA1.toFixed(2)}`;
 
 		// Update the GPA Semester 2 calculation
-   	        const GPA2 = ekt124 / subjectsSemester2.length;
+   	        const GPA2 = (uzw195 + ekt124 + ekt103 + ekt119 + eqt102 + ekt104)/ subjectsSemester2.length;
 
 		// Display the GPA for Semester 2
 		document.getElementById('GPA2').textContent = `GPA: ${GPA2.toFixed(2)}`;
@@ -464,7 +544,12 @@ document.getElementById('total2').textContent = `Total Hour: ${totalCreditHoursS
                 result6.textContent = determineResult(ekt101);
 
 		// Check for Semester 2 subjects
-                result7.textContent = determineResult(ekt124);
+                result7.textContent = determineResult(uzw195);
+                result8.textContent = determineResult(ekt124);
+                result9.textContent = determineResult(ekt103);
+                result10.textContent = determineResult(ekt119);
+                result11.textContent = determineResult(eqt102);
+                result12.textContent = determineResult(ekt104);
 
 		// Function to determine pass/fail result
 function determineResult(grade) {
@@ -476,30 +561,46 @@ function determineResult(grade) {
 			const failSubjectsSemester1 = [];
 
 		    if (determineResult(uzw164) === 'Fail') {
-                        failSubjectsSemester1.push('KURSUS PERSIJILAN BULAN SABIT MERAH MALAYSIA I');
-		    }if (determineResult(uuw130) === 'Fail') {
-                        failSubjectsSemester1.push('FALSAFAH DAN ISU SEMASA');
-                    }
-                    if (determineResult(ekt102) === 'Fail') {
-                        failSubjectsSemester1.push('ASAS KEJURUTERAAN ELEKTRONIK');
-                    }
-                    if (determineResult(eqt101) === 'Fail') {
-                        failSubjectsSemester1.push('MATEMATIK KEJURUTERAAN I');
-                    }
-                    if (determineResult(ekt120) === 'Fail') {
-                        failSubjectsSemester1.push('PENGATURCARAAN KOMPUTER');
-                    }
-                    if (determineResult(ekt101) === 'Fail') {
-                        failSubjectsSemester1.push('TEORI LITAR ELEKTRIK');
-                    }
+                failSubjectsSemester1.push({ code: 'UZW164', name: 'KURSUS PERSIJILAN BULAN SABIT MERAH MALAYSIA I', creditHour: 1 });
+            }
+            if (determineResult(uuw130) === 'Fail') {
+                failSubjectsSemester1.push({ code: 'UUW130', name: 'FALSAFAH DAN ISU SEMASA', creditHour: 2 });
+            }
+            if (determineResult(ekt102) === 'Fail') {
+                failSubjectsSemester1.push({ code: 'EKT102', name: 'ASAS KEJURUTERAAN ELEKTRONIK', creditHour: 3 });
+            }
+            if (determineResult(eqt101) === 'Fail') {
+                failSubjectsSemester1.push({ code: 'EQT101', name: 'MATEMATIK KEJURUTERAAN I', creditHour: 3 });
+            }
+            if (determineResult(ekt120) === 'Fail') {
+                failSubjectsSemester1.push({ code: 'EKT120', name: 'PENGATURCARAAN KOMPUTER', creditHour: 4 });
+            }
+            if (determineResult(ekt101) === 'Fail') {
+                failSubjectsSemester1.push({ code: 'EKT101', name: 'TEORI LITAR ELEKTRIK', creditHour: 4 });
+            }
 
 
 // Check for failed subjects in Semester 2
 const failSubjectsSemester2 = [];
 
-		  if (determineResult(ekt124) === 'Fail') {
-    		       failSubjectsSemester2.push('ELEKTRONIK DIGIT I [DIGITAL ELECTRONICS I]');
-		  }
+            if (determineResult(uzw195) === 'Fail') {
+                failSubjectsSemester2.push({ code: 'UZW195', name: 'RADIO KAMPUS [CAMPUS RADIO]', creditHour: 1 });
+            }
+            if (determineResult(ekt124) === 'Fail') {
+                failSubjectsSemester2.push({ code: 'EKT124', name: 'ELEKTRONIK DIGIT I [DIGITAL ELECTRONICS I]', creditHour: 3 });
+            }
+            if (determineResult(ekt103) === 'Fail') {
+                failSubjectsSemester2.push({ code: 'EKT103', name: 'KEJURUTERAAN ELEKTRIK [ELECTRICAL ENGINEERING]', creditHour: 3 });
+            }
+            if (determineResult(ekt119) === 'Fail') {
+                failSubjectsSemester2.push({ code: 'EKT119', name: 'LITAR ELEKTRIK II [ELECTRIC CIRCUIT II]', creditHour: 3 });
+            }
+            if (determineResult(eqt102) === 'Fail') {
+                failSubjectsSemester2.push({ code: 'EQT102', name: 'MATEMATIK KEJURUTERAAN II [ENGINEERING MATHEMATICS II]', creditHour: 3 });
+            }
+            if (determineResult(ekt104) === 'Fail') {
+                failSubjectsSemester2.push({ code: 'EKT104', name: 'LITAR ELEKTRONIK ANALOG 1 [ANALOG ELECTRONIC CIRCUITS 1]', creditHour: 4 });
+            }
 
 
 // Display the fail subjects and reminder for Semester 1
@@ -514,10 +615,11 @@ const reminderDivSemester2 = document.getElementById('reminderSemester2');
 // Display logic for Semester 1
 if (failSubjectsSemester1.length > 0) {
     // Display the fail subjects
-    failSubjectsListSemester1.innerHTML = failSubjectsSemester1.map(subject => `<li>${subject}</li>`).join('');
+    failSubjectsListSemester1.innerHTML = failSubjectsSemester1.map(subject => `<li>${subject.name}</li>`).join('');
 
     // Display the reminder message
-    const reminderMessageSemester1 = `You should retake the ${failSubjectsSemester1.length > 1 ? 'following subjects' : 'subject'} for the next semester: ${failSubjectsSemester1.join(', ')}`;
+    const subjectNamesSemester1 = failSubjectsSemester1.map(subject => subject.name); // Extract subject names
+    const reminderMessageSemester1 = `You should retake the ${subjectNamesSemester1.length > 1 ? 'following subjects' : 'subject'} for the next semester: ${subjectNamesSemester1.join(', ')}`;
     const reminderParagraphSemester1 = document.createElement('p');
     reminderParagraphSemester1.textContent = reminderMessageSemester1;
 
@@ -535,10 +637,11 @@ if (failSubjectsSemester1.length > 0) {
 // Display logic for Semester 2
 if (failSubjectsSemester2.length > 0) {
     // Display the fail subjects
-    failSubjectsListSemester2.innerHTML = failSubjectsSemester2.map(subject => `<li>${subject}</li>`).join('');
+    failSubjectsListSemester2.innerHTML = failSubjectsSemester2.map(subject => `<li>${subject.name}</li>`).join('');
 
     // Display the reminder message
-    const reminderMessageSemester2 = `You should retake the ${failSubjectsSemester2.length > 1 ? 'following subjects' : 'subject'} for the next semester: ${failSubjectsSemester2.join(', ')}`;
+    const subjectNamesSemester2 = failSubjectsSemester2.map(subject => subject.name); // Extract subject names
+    const reminderMessageSemester2 = `You should retake the ${subjectNamesSemester2.length > 1 ? 'following subjects' : 'subject'} for the next semester: ${subjectNamesSemester2.join(', ')}`;
     const reminderParagraphSemester2 = document.createElement('p');
     reminderParagraphSemester2.textContent = reminderMessageSemester2;
 
@@ -556,11 +659,17 @@ if (failSubjectsSemester2.length > 0) {
 const detectElementSemester1 = document.getElementById('DetectSemester1');
 const detectElementSemester2 = document.getElementById('DetectSemester2');
 
-// Assuming GPA1 and GPA2 are defined variables
-
+// Stipulation for Semester 1
 detectElementSemester1.textContent = (GPA1 < 2) ? 'P1' : 'Active';
-detectElementSemester2.textContent = (GPA2 < 2) ? 'P1' : 'Active';
 
+// Stipulation for Semester 2
+if (detectElementSemester1.textContent === 'P1') {
+    // If Semester 1 is P1, check GPA for Semester 2
+    detectElementSemester2.textContent = (GPA2 < 2) ? 'P2' : 'Active';
+} else {
+    // If Semester 1 is Active, Semester 2 can be Active or P1
+    detectElementSemester2.textContent = (GPA2 < 2) ? 'P1' : 'Active';
+}
 
 		// Version 1 of new schedule information
 const newScheduleDiv1 = document.getElementById('newSchedule1');
@@ -568,12 +677,7 @@ const newScheduleMessage1 = `
     <h3>New Schedule For Semester 2</h3>
     <p>For next semester, you need to take the following subjects:</p>
     <ul>
-        <li>UZW195 - RADIO KAMPUS [CAMPUS RADIO]</li>
-        <li>EKT124 - ELEKTRONIK DIGIT I [DIGITAL ELECTRONICS I]</li>
-        <li>EKT103 - KEJURUTERAAN ELEKTRIK [ELECTRICAL ENGINEERING]</li>
-        <li>EKT119 - LITAR ELEKTRIK II [ELECTRIC CIRCUIT II]</li>
-        <li>EQT102 - MATEMATIK KEJURUTERAAN II [ENGINEERING MATHEMATICS II]</li>
-        <li>EKT104 - LITAR ELEKTRONIK ANALOG 1 [ANALOG ELECTRONIC CIRCUITS 1]</li>
+    ${subjectsSemester2.map(subject => `<li>${subject.code} - ${subject.name} [${subject.creditHour} Kredit]</li>`).join('')}
     </ul>
 `;
 newScheduleDiv1.innerHTML = newScheduleMessage1;
@@ -582,8 +686,9 @@ newScheduleDiv1.innerHTML = newScheduleMessage1;
 const newScheduleDiv2 = document.getElementById('newSchedule2');
 const newScheduleMessage2 = `
     <h3>New Schedule For Semester 3</h3>
-    <p>For next semester, you need to take the following subjects:</p>
-    <ul>
+        <p>For next semester, you need to take the following subjects:</p>
+        <ul>
+        ${failSubjectsSemester1.map(subject => `<li>${subject.code} - ${subject.name} [${subject.creditHour} Kredit]</li>`).join('')}
         <li>ABC123 - EXAMPLE SUBJECT 1</li>
         <li>DEF456 - EXAMPLE SUBJECT 2</li>
         <li>GHI789 - EXAMPLE SUBJECT 3</li>
