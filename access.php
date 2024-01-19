@@ -40,15 +40,45 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login System</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        body,
+        html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #001b3d;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        #statusLabel {
+            background-color: #001b3d;
+            color: white;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.0em;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .middle-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
         .container-login {
@@ -102,6 +132,11 @@ mysqli_close($conn);
 </head>
 
 <body>
+
+    <div class="header">
+        <h1>System Log In</h1>
+    </div>
+
     <div class="container-login">
         <form method="post" action="http://localhost/try.php">
             <div id="statusLabel">Student</div>
